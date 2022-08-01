@@ -1,0 +1,38 @@
+{
+  "collection": {
+    "traits": {
+      "Complexity": {
+        "high": 626,
+        "low": 130,
+        "medium": 268
+      },
+      "Composition Type": {
+        "flock": 24,
+        "focal": 102,
+        "offset": 129,
+        "sweep": 769
+      },
+      "Palette": {
+        "blood moon": 43,
+        "blossoms": 73,
+        "dragon dance": 99,
+        "forest": 62,
+        "hong bao": 78,
+        "ink and xuan paper": 86,
+        "intrepid": 118,
+        "koten": 60,
+        "mira": 92,
+        "poppy field": 75,
+        "porcelain vase": 103,
+        "sea dune": 49,
+        "smoke and fire": 32,
+        "velvet": 43,
+        "vermilion bird": 11
+      },
+      "Splotches": {
+        "no": 711,
+        "yes": 313
+      }
+    }
+  }
+}

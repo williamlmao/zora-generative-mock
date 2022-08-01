@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
-import { ThemeContextProvider } from "../contexts/ThemeContext";
+import { StepContextProvider } from "../contexts/StepContext";
 import "../styles/globals.css";
 
 const queryClient = new QueryClient();
@@ -54,13 +54,13 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <WagmiConfig client={wagmiClient}>
-      <ThemeContextProvider>
-        <RainbowKitProvider chains={chains}>
-          <QueryClientProvider client={queryClient}>
+      <RainbowKitProvider chains={chains}>
+        <QueryClientProvider client={queryClient}>
+          <StepContextProvider>
             {getLayout(<Component {...pageProps} />)}
-          </QueryClientProvider>
-        </RainbowKitProvider>
-      </ThemeContextProvider>
+          </StepContextProvider>
+        </QueryClientProvider>
+      </RainbowKitProvider>
     </WagmiConfig>
   );
 }

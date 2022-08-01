@@ -19,3 +19,15 @@ a {
   box-sizing: border-box;
   font-family: "Inter";
 }
+
+input {
+  border: none;
+  outline: none;
+}
+
+input:focus {
+  background-color: white;
+  outline-style: solid;
+  outline-width: 2px;
+  outline-color: #e0e0e0;
+}

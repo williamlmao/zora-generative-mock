@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { Alert, Progress, RadialProgress, Stats } from "react-daisyui";
 import { Section } from "../components/Section";
-import { AppLayout } from "../layouts/AppLayout";
+import { GenerativeLayout } from "../layouts/GenerativeLayout";
 import type { NextPageWithLayout } from "./_app";
 
 const Page: NextPageWithLayout = () => {
@@ -121,12 +121,12 @@ const Page: NextPageWithLayout = () => {
 
 Page.getLayout = function getLayout(page: ReactElement) {
   return (
-    <AppLayout
+    <GenerativeLayout
       title="Dashboard"
       description="The dashboard page for this dapp starter kit."
     >
       {page}
-    </AppLayout>
+    </GenerativeLayout>
   );
 };
 

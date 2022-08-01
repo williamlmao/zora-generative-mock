@@ -1,13 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React, { FC } from "react";
-import { Sidebar } from "../components/Sidebar";
-import { PrimaryLayout } from "./PrimaryLayout";
 import { useRouter } from "next/router";
+import React, { FC } from "react";
+import { Stepper } from "../components/Stepper";
+import { PrimaryLayout } from "./PrimaryLayout";
 
 type Props = {
-  children: React.ReactNode;
   title: string;
-  description: string;
+  children: React.ReactNode;
 };
 
 const pageTransitionMotion = {
@@ -31,22 +30,23 @@ const pageTransitionMotion = {
   },
 };
 
-export const AppLayout: FC<Props> = ({ children, title, description }) => {
+export const GenerativeLayout: FC<Props> = ({ title, children }) => {
   const router = useRouter();
+  console.log(title);
   return (
-    <PrimaryLayout title={title} description={description}>
-      <div className="flex w-full">
-        <Sidebar />
+    <PrimaryLayout>
+      <div className="flex flex-col w-full">
+        <Stepper />
         <AnimatePresence exitBeforeEnter>
           <motion.div
-            className="w-full p-8"
+            className="w-full p-4 sm:p-8"
             variants={pageTransitionMotion}
             initial="initial"
             animate="animate"
             exit="exit"
             key={router.pathname}
           >
-            <div className="text-3xl font-bold mb-8">{title}</div>
+            <h1 className="text-3xl font-medium mb-4">{title}</h1>
             {children}
           </motion.div>
         </AnimatePresence>

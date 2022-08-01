@@ -20,7 +20,7 @@ const Page: NextPageWithLayout = () => {
           tooling that scales with your creative ambitions.
         </p>
       </div>
-      <Link href="/dashboard">
+      <Link href="/create/generative/collectiondetails">
         <Button color="primary" className="rounded-md py-4 normal-case">
           Create a collection
         </Button>
@@ -30,11 +30,7 @@ const Page: NextPageWithLayout = () => {
 };
 
 Page.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <PrimaryLayout title="Zora Creator" description="Create a collection">
-      {page}
-    </PrimaryLayout>
-  );
+  return <PrimaryLayout>{page}</PrimaryLayout>;
 };
 
 export default Page;

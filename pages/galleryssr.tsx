@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import type { ReactElement } from "react";
 import { Alert } from "react-daisyui";
-import { AppLayout } from "../layouts/AppLayout";
+import { GenerativeLayout } from "../layouts/GenerativeLayout";
 import { GalleryCard } from "../modules/gallery/components/GalleryCard";
 import { Picture } from "../modules/gallery/types";
 import { NextPageWithLayout } from "./_app";
@@ -29,12 +29,12 @@ const Page: NextPageWithLayout<Props> = ({ pictures }) => {
 
 Page.getLayout = function getLayout(page: ReactElement) {
   return (
-    <AppLayout
+    <GenerativeLayout
       title="Gallery (SSR)"
       description="A server-side rendered gallery"
     >
       {page}
-    </AppLayout>
+    </GenerativeLayout>
   );
 };
 

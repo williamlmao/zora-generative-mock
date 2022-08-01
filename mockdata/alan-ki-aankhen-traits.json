@@ -1,0 +1,38 @@
+{
+  "traits": {
+    "Composition": [
+      {
+        "value": "Eyescape",
+        "weight": 1
+      },
+      { "value": "Pencil city", "weight": 1 },
+      { "value": "Ancient city", "weight": 1 },
+      { "value": "Crowded city", "weight": 1 },
+      { "value": "Rooftops", "weight": 1 },
+      { "value": "Maze of windows", "weight": 1 }
+    ],
+    "Moon Size": [
+      { "value": "Small", "weight": 1 },
+      { "value": "Medium", "weight": 1 },
+      { "value": "Large", "weight": 1 }
+    ],
+    "Number of moons": [
+      { "value": "1", "weight": 1 },
+      { "value": "2", "weight": 1 },
+      { "value": "3", "weight": 1 }
+    ],
+    "Paper": [
+      { "value": "Smoke", "weight": 1 },
+      { "value": "Antique", "weight": 1 },
+      { "value": "Snow", "weight": 1 },
+      { "value": "Green", "weight": 1 }
+    ],
+    "Sky": [
+      { "value": "Clear", "weight": 1 },
+      { "value": "Gentle Glow", "weight": 1 },
+      { "value": "Waves", "weight": 1 },
+      { "value": "Dut Rings", "weight": 1 },
+      { "value": "Sprials", "weight": 1 }
+    ]
+  }
+}

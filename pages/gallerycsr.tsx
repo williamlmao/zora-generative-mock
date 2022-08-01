@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import { Alert } from "react-daisyui";
-import { AppLayout } from "../layouts/AppLayout";
+import { GenerativeLayout } from "../layouts/GenerativeLayout";
 import { InfiniteGrid } from "../modules/gallery/components/InfiniteGrid";
 import { useInfiniteGallery } from "../modules/gallery/hooks/useInfiniteGallery";
 
@@ -25,12 +25,12 @@ const Page = () => {
 
 Page.getLayout = function getLayout(page: ReactElement) {
   return (
-    <AppLayout
+    <GenerativeLayout
       title="Gallery (Client Side Rendered)"
       description="A gallery of photos which are client side rendered. Used for comparison with the SSR gallery."
     >
       {page}
-    </AppLayout>
+    </GenerativeLayout>
   );
 };
 

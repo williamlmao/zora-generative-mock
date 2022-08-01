@@ -16,7 +16,6 @@ module.exports = {
         header: headerHeight,
         screenLessHeader: `[calc(100vh_-_80px)]`,
       },
-
       padding: {
         header: headerHeight,
       },
@@ -25,15 +24,13 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        dark: {
-          ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
-        },
         light: {
           ...require("daisyui/src/colors/themes")["[data-theme=light]"],
           primary: "#000000",
           "primary-focus": "#4D4D4D",
           "primary-hover": "#4D4D4D",
-          secondary: "#4D4D4D",
+          secondary: "#a7a7a7",
+
           "base-200": "#F2F2F2",
         },
       },
