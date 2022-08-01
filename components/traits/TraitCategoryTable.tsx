@@ -15,10 +15,12 @@ export const TraitCategoryTable = ({
   category,
   traits,
   handleNewTraitValue,
+  deleteTraitValue,
 }: {
   category: string;
   traits: Trait[];
   handleNewTraitValue: (category: string, value: Trait) => void;
+  deleteTraitValue: (category: string, value: Trait) => void;
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const { register, getValues } = useForm();
@@ -41,7 +43,14 @@ export const TraitCategoryTable = ({
       />
       <div className="bg-base-200 p-4 rounded-md flex flex-wrap">
         {traits.map((trait) => {
-          return <TraitValueCard trait={trait} key={trait.value} />;
+          return (
+            <TraitValueCard
+              trait={trait}
+              key={trait.value}
+              category={category}
+              deleteTraitValue={deleteTraitValue}
+            />
+          );
         })}
       </div>
     </div>

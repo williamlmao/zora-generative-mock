@@ -43,6 +43,17 @@ const Page: NextPageWithLayout = () => {
     });
   };
 
+  const deleteTraitValue = (category: string, value: Trait) => {
+    setTraitData((prevState) => {
+      return {
+        ...prevState,
+        [category]: prevState[category].filter(
+          (trait) => trait.value !== value.value
+        ),
+      };
+    });
+  };
+
   return (
     <div className="w-full">
       <NextSeo
@@ -100,6 +111,7 @@ const Page: NextPageWithLayout = () => {
               category={category}
               traits={traitData[category]}
               handleNewTraitValue={handleNewTraitValue}
+              deleteTraitValue={deleteTraitValue}
             />
           </div>
         );
