@@ -34,21 +34,21 @@ const Page: NextPageWithLayout = () => {
     });
   };
 
-  const handleNewTraitValue = (category: string, value: Trait) => {
+  const handleNewTraitValue = (category: string, trait: Trait) => {
     setTraitData((prevState) => {
       return {
         ...prevState,
-        [category]: [...prevState[category], value],
+        [category]: [...prevState[category], trait],
       };
     });
   };
 
-  const deleteTraitValue = (category: string, value: Trait) => {
+  const deleteTraitValue = (category: string, trait: Trait) => {
     setTraitData((prevState) => {
       return {
         ...prevState,
         [category]: prevState[category].filter(
-          (trait) => trait.value !== value.value
+          (traitInState) => traitInState.value !== trait.value
         ),
       };
     });

@@ -36,7 +36,12 @@ export const TraitValueCard = ({
 
       <div>{trait.value}</div>
       <div>{trait.weight}</div>
-      <Image src="/thumbnailplaceholder.png" height="100" width="100" />
+      <Image
+        src="/thumbnailplaceholder.png"
+        height="100"
+        width="100"
+        alt="placeholder"
+      />
     </motion.div>
   );
 };

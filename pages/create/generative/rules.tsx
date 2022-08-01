@@ -17,7 +17,7 @@ const Page: NextPageWithLayout = () => {
 };
 
 Page.getLayout = function getLayout(page: ReactElement) {
-  return <GenerativeLayout>{page}</GenerativeLayout>;
+  return <GenerativeLayout title="Rules">{page}</GenerativeLayout>;
 };
 
 export default Page;

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { ReactElement } from "react";
 import { Button } from "react-daisyui";
-import { Zorb } from "../components/Zorb";
 import { PrimaryLayout } from "../layouts/PrimaryLayout";
 import { NextPageWithLayout } from "./_app";
 
@@ -13,7 +12,7 @@ const Page: NextPageWithLayout = () => {
           Bring your imagination.
         </h1>
         <p className="my-4 sm:text-[65px] text-[#808080] font-bold">
-          We'll cover the rest.
+          {`We'll cover the rest.`}
         </p>
         <p className="my-4 text-xl">
           Our creator toolkit makes it easy to create an NFT collection, with

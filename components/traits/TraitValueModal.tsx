@@ -16,7 +16,7 @@ export const TraitValueModal = ({
   modalVisible: boolean;
   setModalVisible: (visible: boolean) => void;
   category: string;
-  handleNewTraitValue: (category: string, value: Trait) => void;
+  handleNewTraitValue: (category: string, trait: Trait) => void;
 }) => {
   const { register, getValues } = useForm();
 
@@ -56,7 +56,8 @@ export const TraitValueModal = ({
           <Button
             type="button"
             onClick={() => {
-              handleNewTraitValue(category, getValues());
+              const values = getValues();
+              handleNewTraitValue(category, getValues() as Trait);
               setModalVisible(false);
             }}
           >

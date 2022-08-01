@@ -19,8 +19,8 @@ export const TraitCategoryTable = ({
 }: {
   category: string;
   traits: Trait[];
-  handleNewTraitValue: (category: string, value: Trait) => void;
-  deleteTraitValue: (category: string, value: Trait) => void;
+  handleNewTraitValue: (category: string, trait: Trait) => void;
+  deleteTraitValue: (category: string, trait: Trait) => void;
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const { register, getValues } = useForm();

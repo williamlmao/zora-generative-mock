@@ -22,13 +22,13 @@ export const Zorb = () => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(19.4876 7.30724) scale(22.5872)"
         >
-          <stop offset="0.15625" stop-color="#DCC8D0"></stop>
-          <stop offset="0.302083" stop-color="#78C8CF"></stop>
-          <stop offset="0.427083" stop-color="#4D959E"></stop>
-          <stop offset="0.557292" stop-color="#305EB9"></stop>
-          <stop offset="0.796875" stop-color="#311F12"></stop>
-          <stop offset="0.90625" stop-color="#684232"></stop>
-          <stop offset="1" stop-color="#2D1C13"></stop>
+          <stop offset="0.15625" stopColor="#DCC8D0"></stop>
+          <stop offset="0.302083" stopColor="#78C8CF"></stop>
+          <stop offset="0.427083" stopColor="#4D959E"></stop>
+          <stop offset="0.557292" stopColor="#305EB9"></stop>
+          <stop offset="0.796875" stopColor="#311F12"></stop>
+          <stop offset="0.90625" stopColor="#684232"></stop>
+          <stop offset="1" stopColor="#2D1C13"></stop>
         </radialGradient>
       </defs>
     </svg>

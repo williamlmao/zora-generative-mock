@@ -13,7 +13,7 @@ export const Stepper = () => {
     if (activeStepIndex > lastCompletedStep + 1 && activeStepIndex !== 0) {
       router.replace(steps[0].path);
     }
-  }, []);
+  }, [activeStepIndex, lastCompletedStep, router, steps]);
 
   return (
     <div className="font-medium text-sm flex justify-center text-center">
