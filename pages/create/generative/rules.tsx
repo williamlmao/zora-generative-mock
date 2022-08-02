@@ -1,5 +1,6 @@
 import { NextSeo } from "next-seo";
 import type { ReactElement } from "react";
+import { RuleBuilder } from "../../../components/rules/RuleBuilder";
 import { GenerativeLayout } from "../../../layouts/GenerativeLayout";
 import type { NextPageWithLayout } from "../../_app";
 
@@ -11,13 +12,13 @@ const Page: NextPageWithLayout = () => {
         title="Generative Rules • ZORA Generative"
         description="Set your generative rules"
       />
-      <h1 className="text-3xl font-medium">Rules</h1>
+      <RuleBuilder />
     </div>
   );
 };
 
 Page.getLayout = function getLayout(page: ReactElement) {
-  return <GenerativeLayout title="Rules">{page}</GenerativeLayout>;
+  return <GenerativeLayout title="Rule Builder">{page}</GenerativeLayout>;
 };
 
 export default Page;

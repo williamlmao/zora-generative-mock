@@ -57,7 +57,9 @@ export const Modal = ({
               shape="circle"
               size="xs"
               className="absolute top-2 right-2"
-              onClick={() => setModalVisible(false)}
+              onClick={() => {
+                setModalVisible(false);
+              }}
             >
               <IoIosClose className="text-lg" />
             </Button>

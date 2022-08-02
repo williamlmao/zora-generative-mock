@@ -1,4 +1,11 @@
-import React, { createContext, FC, useState } from "react";
+import React, {
+  createContext,
+  FC,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { StepContext } from "./StepContext";
 
 interface Props {
   children: React.ReactNode;
@@ -9,7 +16,7 @@ export interface Trait {
   weight: number;
 }
 
-interface TraitDataInterface {
+export interface TraitDataInterface {
   [key: string]: Trait[];
 }
 
@@ -32,6 +39,24 @@ export const TraitsContext = createContext<TraitsContextInterface>({
 export const TraitsContextProvider: FC<Props> = ({ children }) => {
   const [traitData, setTraitData] = useState<TraitDataInterface>({});
   const [modalVisible, setModalVisible] = useState(false);
+  const { updateStepStatus } = useContext(StepContext);
+
+  // I'm using local storage in place of a backend for this mock app.
+  useEffect(() => {
+    const localStorageData = localStorage.getItem("traitData");
+    if (localStorageData) {
+      setTraitData(JSON.parse(localStorageData));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (Object.keys(traitData).length > 0) {
+      localStorage.setItem("traitData", JSON.stringify(traitData));
+      updateStepStatus(1, "completed");
+      updateStepStatus(2, "available");
+    }
+  }, [traitData]);
+
   const handleNewCategory = (category: string) => {
     setTraitData((prevState) => {
       return {

@@ -14,7 +14,7 @@ export const TraitValueModal = ({
 }: {
   title: string;
   modalVisible: boolean;
-  setModalVisible: (visible: boolean) => void;
+  setModalVisible: Function;
   category: string;
   handleNewTraitValue: (category: string, trait: Trait) => void;
   trait?: Trait;
@@ -22,7 +22,7 @@ export const TraitValueModal = ({
   const { register, getValues } = useForm({
     defaultValues: { value: trait?.value, weight: trait?.weight },
   });
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+  const { getRootProps, getInputProps } = useDropzone();
   return (
     <Modal modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <form className="flex flex-col gap-4">
@@ -68,7 +68,8 @@ export const TraitValueModal = ({
           </Button>
           <Button
             type="button"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               handleNewTraitValue(category, getValues() as Trait);
               setModalVisible(false);
             }}

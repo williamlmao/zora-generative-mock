@@ -1,12 +1,15 @@
+import Link from "next/link";
 import { useContext, useState } from "react";
 import { Button, Tooltip } from "react-daisyui";
 import { IoIosInformation } from "react-icons/io";
+import { StepContext } from "../../contexts/StepContext";
 import { TraitsContext } from "../../contexts/TraitsContext";
 import mockTraitData from "../../mockdata/alan-ki-aankhen-traits.json";
 import { TraitCategoryModal } from "./TraitCategoryModal";
 import { TraitCategorySection } from "./TraitCategorySection";
 
 export const TraitsBuilder = () => {
+  const { updateStepStatus } = useContext(StepContext);
   const [modalVisible, setModalVisible] = useState(false);
   const { setTraitData, traitData } = useContext(TraitsContext);
   return (
@@ -46,6 +49,27 @@ export const TraitsBuilder = () => {
           Add some traits!
         </div>
       )}
+      <div className="flex gap-4">
+        <Link href="/create/generative/collectiondetails">
+          <Button type="button" className="w-1/2">
+            Back
+          </Button>
+        </Link>
+
+        <Link href="/create/generative/rules">
+          <Button
+            type="submit"
+            className="w-1/2"
+            disabled={Object.keys(traitData).length === 0}
+            onClick={() => {
+              updateStepStatus(1, "complete");
+              updateStepStatus(2, "available");
+            }}
+          >
+            Next
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };
