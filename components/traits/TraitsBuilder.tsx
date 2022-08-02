@@ -28,16 +28,24 @@ export const TraitsBuilder = () => {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
-      {Object.keys(traitData).map((category: any) => {
-        return (
-          <div key={category}>
-            <TraitCategorySection
-              category={category}
-              traits={traitData[category]}
-            />
-          </div>
-        );
-      })}
+      {Object.keys(traitData).length > 0 ? (
+        <div>
+          {Object.keys(traitData).map((category: any) => {
+            return (
+              <div key={category}>
+                <TraitCategorySection
+                  category={category}
+                  traits={traitData[category]}
+                />
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="bg-base-200 h-[300px] flex items-center justify-center rounded-md my-12">
+          Add some traits!
+        </div>
+      )}
     </div>
   );
 };

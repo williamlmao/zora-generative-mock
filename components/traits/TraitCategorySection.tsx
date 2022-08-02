@@ -38,8 +38,6 @@ export const TraitCategorySection = ({
               trait={trait}
               key={trait.value}
               category={category}
-              deleteTraitValue={deleteTraitValue}
-              handleNewTraitValue={handleNewTraitValue} //todo: Add a traits provider and stop propdrilling
             />
           );
         })}

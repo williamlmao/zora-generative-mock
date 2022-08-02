@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Button, Tooltip } from "react-daisyui";
+import { Tooltip } from "react-daisyui";
 import { IoIosClose, IoIosStats } from "react-icons/io";
 import type { Trait } from "./traits.types";
 import { useContext, useState } from "react";
@@ -39,7 +39,7 @@ export const TraitValueCard = ({
           deleteTraitValue(category, trait);
         }}
       >
-        <IoIosClose className="text-base" />
+        <IoIosClose className="text-base border-2 rounded-full" />
       </motion.div>
       <div className="text-lg font-medium">{trait.value}</div>
       <Tooltip
