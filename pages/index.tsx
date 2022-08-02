@@ -1,3 +1,4 @@
+import { NextSeo } from "next-seo";
 import Link from "next/link";
 import type { ReactElement } from "react";
 import { Button } from "react-daisyui";
@@ -7,6 +8,7 @@ import { NextPageWithLayout } from "./_app";
 const Page: NextPageWithLayout = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full p-4">
+      <NextSeo title="ZORA Creator" description="Create on Zora" />
       <div className="text-center max-w-[740px]">
         <h1 className="text-4xl sm:text-[65px] text-black font-bold">
           Bring your imagination.

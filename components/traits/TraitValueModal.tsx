@@ -1,35 +1,38 @@
 import { Button } from "react-daisyui";
 import { useForm } from "react-hook-form";
 import { Modal } from "../Modal";
-
-type Trait = {
-  value: string;
-  weight: number;
-};
+import type { Trait } from "./traits.types";
 
 export const TraitValueModal = ({
+  title,
   modalVisible,
   setModalVisible,
   category,
   handleNewTraitValue,
+  trait,
 }: {
+  title: string;
   modalVisible: boolean;
   setModalVisible: (visible: boolean) => void;
   category: string;
   handleNewTraitValue: (category: string, trait: Trait) => void;
+  trait?: Trait;
 }) => {
-  const { register, getValues } = useForm();
+  const { register, getValues } = useForm({
+    defaultValues: { value: trait?.value, weight: trait?.weight },
+  });
 
   return (
     <Modal modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <form className="flex flex-col gap-4">
-        <h3 className="text-2xl font-semibold">Add new {category}</h3>
+        <h3 className="text-2xl font-semibold">{title}</h3>
         <div className="">
           <div className="font-medium text-secondary ml-2 mb-2">
             Trait Value
           </div>
           <input
             {...register("value")}
+            value={trait?.value}
             placeholder="Opal Wave Texture"
             className="bg-base-300 rounded-md p-2 w-full"
           />
@@ -56,7 +59,6 @@ export const TraitValueModal = ({
           <Button
             type="button"
             onClick={() => {
-              const values = getValues();
               handleNewTraitValue(category, getValues() as Trait);
               setModalVisible(false);
             }}

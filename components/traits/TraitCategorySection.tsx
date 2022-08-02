@@ -1,32 +1,21 @@
+import { useContext, useState } from "react";
 import { Button } from "react-daisyui";
-import Image from "next/image";
-import { Modal } from "../Modal";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { TraitsContext } from "../../contexts/TraitsContext";
+import type { Trait } from "./traits.types";
 import { TraitValueCard } from "./TraitValueCard";
 import { TraitValueModal } from "./TraitValueModal";
 
-type Trait = {
-  value: string;
-  weight: number;
-};
-
-export const TraitCategoryTable = ({
+export const TraitCategorySection = ({
   category,
   traits,
-  handleNewTraitValue,
-  deleteTraitValue,
 }: {
   category: string;
   traits: Trait[];
-  handleNewTraitValue: (category: string, trait: Trait) => void;
-  deleteTraitValue: (category: string, trait: Trait) => void;
 }) => {
+  const { handleNewTraitValue, deleteTraitValue } = useContext(TraitsContext);
   const [modalVisible, setModalVisible] = useState(false);
-  const { register, getValues } = useForm();
-
   return (
-    <div className="my-6">
+    <div className="my-6 ">
       <div className="flex items-center justify-between mb-2">
         <div className="text-2xl font-semibold">
           {category} ({traits.length})
@@ -40,8 +29,9 @@ export const TraitCategoryTable = ({
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         handleNewTraitValue={handleNewTraitValue}
+        title={`Add new ${category}`}
       />
-      <div className="bg-base-200 p-4 rounded-md flex flex-wrap">
+      <div className="bg-base-200 p-4 rounded-md flex flex-wrap max-h-[600px] overflow-y-auto">
         {traits.map((trait) => {
           return (
             <TraitValueCard
@@ -49,6 +39,7 @@ export const TraitCategoryTable = ({
               key={trait.value}
               category={category}
               deleteTraitValue={deleteTraitValue}
+              handleNewTraitValue={handleNewTraitValue} //todo: Add a traits provider and stop propdrilling
             />
           );
         })}
