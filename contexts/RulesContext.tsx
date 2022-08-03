@@ -50,10 +50,10 @@ export const RulesContextProvider: FC<Props> = ({ children }) => {
 
   // I'm using local storage in place of a backend for this mock app.
   useEffect(() => {
-    const localStorageData = localStorage.getItem("rules");
-    if (localStorageData) {
-      setRules(JSON.parse(localStorageData));
-    }
+    // const localStorageData = localStorage.getItem("rules");
+    // if (localStorageData) {
+    //   setRules(JSON.parse(localStorageData));
+    // }
   }, []);
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export const RulesContextProvider: FC<Props> = ({ children }) => {
   const handleNewRuleValue = (category: string, rule: Rule) => {};
 
   const deleteRuleValue = (category: string, rule: Rule) => {};
-
+  console.log("rules", rules);
   return (
     <RulesContext.Provider
       value={{

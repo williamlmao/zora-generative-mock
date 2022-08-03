@@ -21,11 +21,11 @@ export const Zorb = ({
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(19.4876 7.30724) scale(22.5872)"
           >
-            <stop offset="15.62%" stop-color="hsl(42, 77%, 97%)" />
-            <stop offset="39.58%" stop-color="hsl(42, 78%, 89%)" />
-            <stop offset="72.92%" stop-color="hsl(122, 80%, 77%)" />
-            <stop offset="90.63%" stop-color="hsl(132, 85%, 67%)" />
-            <stop offset="100%" stop-color="hsl(132, 87%, 67%)" />
+            <stop offset="15.62%" stopColor="hsl(42, 77%, 97%)" />
+            <stop offset="39.58%" stopColor="hsl(42, 78%, 89%)" />
+            <stop offset="72.92%" stopColor="hsl(122, 80%, 77%)" />
+            <stop offset="90.63%" stopColor="hsl(132, 85%, 67%)" />
+            <stop offset="100%" stopColor="hsl(132, 87%, 67%)" />
           </radialGradient>
         </defs>
       </svg>
@@ -50,11 +50,11 @@ export const Zorb = ({
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(19.4876 7.30724) scale(22.5872)"
           >
-            <stop offset="15.62%" stop-color="hsl(90, 77%, 97%)" />
-            <stop offset="39.58%" stop-color="hsl(100, 90%, 59%)" />
-            <stop offset="72.92%" stop-color="hsl(122, 80%, 67%)" />
-            <stop offset="90.63%" stop-color="hsl(132, 85%, 47%)" />
-            <stop offset="100%" stop-color="hsl(132, 87%, 45%)" />
+            <stop offset="15.62%" stopColor="hsl(90, 77%, 97%)" />
+            <stop offset="39.58%" stopColor="hsl(100, 90%, 59%)" />
+            <stop offset="72.92%" stopColor="hsl(122, 80%, 67%)" />
+            <stop offset="90.63%" stopColor="hsl(132, 85%, 47%)" />
+            <stop offset="100%" stopColor="hsl(132, 87%, 45%)" />
           </radialGradient>
         </defs>
       </svg>
@@ -85,11 +85,11 @@ export const Zorb = ({
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(19.4876 7.30724) scale(22.5872)"
           >
-            <stop offset="15.62%" stop-color="hsl(42, 77%, 97%)" />
-            <stop offset="39.58%" stop-color="hsl(42, 78%, 89%)" />
-            <stop offset="72.92%" stop-color="hsl(53, 100%, 50%, 1)" />
-            <stop offset="90.63%" stop-color="hsla(42, 100%, 50%, 1)" />
-            <stop offset="100%" stop-color="hsla(38, 100%, 50%, 1)" />
+            <stop offset="15.62%" stopColor="hsl(42, 77%, 97%)" />
+            <stop offset="39.58%" stopColor="hsl(42, 78%, 89%)" />
+            <stop offset="72.92%" stopColor="hsl(53, 100%, 50%, 1)" />
+            <stop offset="90.63%" stopColor="hsla(42, 100%, 50%, 1)" />
+            <stop offset="100%" stopColor="hsla(38, 100%, 50%, 1)" />
           </radialGradient>
         </defs>
       </svg>

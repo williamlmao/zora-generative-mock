@@ -7,18 +7,23 @@ import { Modal } from "../Modal";
 export const TraitCategoryModal = ({
   modalVisible,
   setModalVisible,
+  editCategory,
 }: {
   modalVisible: boolean;
   setModalVisible: (visible: boolean) => void;
+  editCategory?: string;
 }) => {
-  const { register, getValues } = useForm();
-  const { handleNewCategory } = useContext(TraitsContext);
+  const { register, getValues } = useForm({
+    defaultValues: { category: editCategory },
+  });
+  const { handleNewCategory, renameCategory, deleteCategory } =
+    useContext(TraitsContext);
   return (
     <Modal modalVisible={modalVisible} setModalVisible={setModalVisible}>
       <form className="flex flex-col">
         <div className=" mb-4">
           <div className="font-medium text-secondary ml-2 mb-2">
-            Category Name
+            {editCategory ? `Rename ${editCategory}` : "Category Name"}
           </div>
           <input
             {...register("category")}
@@ -36,14 +41,30 @@ export const TraitCategoryModal = ({
           >
             Cancel
           </Button>
+          {editCategory ? (
+            <Button
+              type="button"
+              onClick={() => {
+                deleteCategory(editCategory);
+                setModalVisible(false);
+              }}
+              color="secondary"
+            >
+              Delete
+            </Button>
+          ) : null}
           <Button
             type="button"
             onClick={() => {
-              handleNewCategory(getValues("category"));
+              if (editCategory) {
+                renameCategory(editCategory, getValues("category") || "");
+              } else {
+                handleNewCategory(getValues("category") || "");
+              }
               setModalVisible(false);
             }}
           >
-            Add Category
+            {editCategory ? `Save` : "Add Category"}
           </Button>
         </div>
       </form>

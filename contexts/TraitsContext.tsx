@@ -16,12 +16,18 @@ export interface Trait {
   weight: number;
 }
 
+export interface Category {
+  name: string;
+}
+
 export interface TraitDataInterface {
   [key: string]: Trait[];
 }
 
 interface TraitsContextInterface {
   handleNewCategory: (category: string) => void;
+  deleteCategory: (category: string) => void;
+  renameCategory: (category: string, newName: string) => void;
   handleNewTraitValue: (category: string, trait: Trait) => void;
   deleteTraitValue: (category: string, trait: Trait) => void;
   traitData: TraitDataInterface;
@@ -30,6 +36,8 @@ interface TraitsContextInterface {
 
 export const TraitsContext = createContext<TraitsContextInterface>({
   handleNewCategory: () => undefined,
+  deleteCategory: () => undefined,
+  renameCategory: () => undefined,
   handleNewTraitValue: () => undefined,
   deleteTraitValue: () => undefined,
   traitData: {},
@@ -56,6 +64,19 @@ export const TraitsContextProvider: FC<Props> = ({ children }) => {
       updateStepStatus(2, "available");
     }
   }, [traitData]);
+
+  const deleteCategory = (category: string) => {
+    const newTraitData = { ...traitData };
+    delete newTraitData[category];
+    setTraitData(newTraitData);
+  };
+
+  const renameCategory = (category: string, newName: string) => {
+    const newTraitData = { ...traitData };
+    newTraitData[newName] = traitData[category];
+    delete newTraitData[category];
+    setTraitData(newTraitData);
+  };
 
   const handleNewCategory = (category: string) => {
     setTraitData((prevState) => {
@@ -90,6 +111,8 @@ export const TraitsContextProvider: FC<Props> = ({ children }) => {
     <TraitsContext.Provider
       value={{
         handleNewCategory,
+        deleteCategory,
+        renameCategory,
         handleNewTraitValue,
         deleteTraitValue,
         traitData,
