@@ -1,7 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { Stepper } from "../components/Stepper";
+import { StepContext } from "../contexts/StepContext";
 import { PrimaryLayout } from "./PrimaryLayout";
 
 type Props = {
@@ -32,7 +33,7 @@ const pageTransitionMotion = {
 
 export const GenerativeLayout: FC<Props> = ({ title, children }) => {
   const router = useRouter();
-  console.log(title);
+  const { reset } = useContext(StepContext);
   return (
     <PrimaryLayout>
       <div className="flex flex-col w-full">
@@ -46,7 +47,18 @@ export const GenerativeLayout: FC<Props> = ({ title, children }) => {
             exit="exit"
             key={router.pathname}
           >
-            <h1 className="text-3xl font-medium mb-4">{title}</h1>
+            <div className="flex justify-between items-center">
+              <h1 className="text-3xl font-medium mb-4">{title}</h1>
+              <button
+                onClick={() => {
+                  reset();
+                }}
+                className="hover:underline"
+              >
+                Reset
+              </button>
+            </div>
+
             {children}
           </motion.div>
         </AnimatePresence>

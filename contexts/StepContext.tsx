@@ -1,4 +1,5 @@
 import React, { createContext, FC } from "react";
+import { useRouter } from "next/router";
 
 interface Props {
   children: React.ReactNode;
@@ -20,16 +21,19 @@ interface StepContextInterface {
   setStepIndex: (step: StepIndex) => void;
   updateStepStatus: (stepIndex: number, property: string) => void;
   steps: Steps;
+  reset: () => void;
 }
 
 export const StepContext = createContext<StepContextInterface>({
   stepIndex: 0,
   setStepIndex: () => undefined,
   updateStepStatus: () => undefined,
+  reset: () => undefined,
   steps: [],
 });
 
 export const StepContextProvider: FC<Props> = ({ children }) => {
+  const router = useRouter();
   const [stepIndex, setStepIndex] = React.useState<StepIndex>(0);
   const [steps, setSteps] = React.useState<Steps>([
     {
@@ -58,6 +62,21 @@ export const StepContextProvider: FC<Props> = ({ children }) => {
     },
   ]);
 
+  const reset = () => {
+    localStorage.removeItem("collectiondetails");
+    localStorage.removeItem("traitData");
+    localStorage.removeItem("rules");
+    setSteps(
+      steps.map((step) => {
+        if (step.label === "Collection Details") {
+          return { ...step, available: true, completed: false };
+        } else {
+          return { ...step, available: false, completed: false };
+        }
+      })
+    );
+  };
+
   const updateStepStatus = (stepIndex: number, property: string) => {
     setSteps((prevState) => {
       return prevState.map((step, index) => {
@@ -78,6 +97,7 @@ export const StepContextProvider: FC<Props> = ({ children }) => {
         stepIndex,
         updateStepStatus,
         setStepIndex,
+        reset,
       }}
     >
       {children}

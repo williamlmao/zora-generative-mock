@@ -10,6 +10,7 @@ export const RuleCard = ({ rule, index }: { rule: Rule; index: number }) => {
   if (!traits || Object.keys(traits).length == 0) {
     return <div>Loading...</div>;
   }
+  console.log("rule", rule, traits);
   return (
     <div className="flex border-2 rounded-md justify-between p-2">
       <div className="p-4 w-[300px] flex flex-col items-center justify-center">

@@ -70,8 +70,6 @@ export const RulesContextProvider: FC<Props> = ({ children }) => {
   useEffect(() => {
     if (Object.keys(rules).length > 0) {
       localStorage.setItem("rules", JSON.stringify(rules));
-      updateStepStatus(1, "completed");
-      updateStepStatus(2, "available");
     }
   }, [rules]);
 

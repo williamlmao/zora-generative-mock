@@ -30,10 +30,14 @@ export const StepDisplay = ({
 
   return (
     // "javascript:void(0)" disables the link
-    <Link href={step.available ? step.path : "javascript:void(0)"}>
+    <Link
+      href={step.available || step.completed ? step.path : "javascript:void(0)"}
+    >
       <motion.div
         className={`p-2 m-2 sm:p-4 sm:m-4 flex flex-col items-center justify-center ${
-          step.available ? "hover:cursor-pointer" : "hover:cursor-not-allowed"
+          step.available || step.completed
+            ? "hover:cursor-pointer"
+            : "hover:cursor-not-allowed"
         }`}
         whileHover={{ scale: 1.1 }}
       >
