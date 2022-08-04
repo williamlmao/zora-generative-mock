@@ -19,17 +19,25 @@ export interface Rule {
 }
 
 interface RulesContextInterface {
-  handleNewRuleValue: (category: string, rule: Rule) => void;
-  deleteRuleValue: (category: string, rule: Rule) => void;
+  updateRule: (ruleIndex: number, newRule: Rule) => void;
+  deleteRule: (ruleIndex: number) => void;
   rules: Rule[];
   traits: any | null; // TODO: Strictly type this and remove the any
   setRules: Function;
 }
 
 export const RulesContext = createContext<RulesContextInterface>({
-  handleNewRuleValue: () => undefined,
-  deleteRuleValue: () => undefined,
-  rules: [],
+  updateRule: () => undefined,
+  deleteRule: () => undefined,
+  rules: [
+    {
+      categoryA: "Composition",
+      valueA: "Rooftop",
+      operator: "Does not occur with",
+      categoryB: "Paper",
+      valueB: "Smoke",
+    },
+  ],
   traits: {},
   setRules: () => undefined,
 });
@@ -37,19 +45,22 @@ export const RulesContext = createContext<RulesContextInterface>({
 export const RulesContextProvider: FC<Props> = ({ children }) => {
   const [rules, setRules] = useState<Rule[]>([
     {
-      categoryA: "Background",
-      valueA: "Red",
+      categoryA: "Composition",
+      valueA: "Rooftop",
       operator: "Does not occur with",
-      categoryB: "Hat",
-      valueB: "Blue hat",
+      categoryB: "Paper",
+      valueB: "Smoke",
     },
   ]);
-  const [modalVisible, setModalVisible] = useState(false);
-  const traits = localStorage.getItem("traitData");
+
+  const [traits, setTraits] = useState({});
+
   const { updateStepStatus } = useContext(StepContext);
 
   // I'm using local storage in place of a backend for this mock app.
   useEffect(() => {
+    setTraits(JSON.parse(localStorage.getItem("traitData") || "{}"));
+
     // const localStorageData = localStorage.getItem("rules");
     // if (localStorageData) {
     //   setRules(JSON.parse(localStorageData));
@@ -64,15 +75,23 @@ export const RulesContextProvider: FC<Props> = ({ children }) => {
     }
   }, [rules]);
 
-  const handleNewRuleValue = (category: string, rule: Rule) => {};
+  const updateRule = (ruleIndex: number, newRule: Rule) => {
+    const newRules = [...rules];
+    newRules[ruleIndex] = newRule;
+    setRules(newRules);
+  };
 
-  const deleteRuleValue = (category: string, rule: Rule) => {};
-  console.log("rules", rules);
+  const deleteRule = (ruleIndex: number) => {
+    const newRules = [...rules];
+    newRules.splice(ruleIndex, 1);
+    setRules(newRules);
+  };
+
   return (
     <RulesContext.Provider
       value={{
-        handleNewRuleValue,
-        deleteRuleValue,
+        updateRule,
+        deleteRule,
         rules,
         traits,
         setRules,
