@@ -1,19 +1,25 @@
 import { NextSeo } from "next-seo";
 import { ReactElement, useContext, useEffect } from "react";
-import { Button, Steps } from "react-daisyui";
-import { useForm } from "react-hook-form";
-import { GenerativeLayout } from "../../../layouts/GenerativeLayout";
-import { useDropzone } from "react-dropzone";
-import type { NextPageWithLayout } from "../../_app";
-import Link from "next/link";
-import { StepContext } from "../../../contexts/StepContext";
 import { CollectionDetailsForm } from "../../../components/collectiondetails/CollectionDetailsForm";
+import { StepContext } from "../../../contexts/StepContext";
+import { GenerativeLayout } from "../../../layouts/GenerativeLayout";
+import type { NextPageWithLayout } from "../../_app";
 
 const Page: NextPageWithLayout = () => {
   const { updateStepStatus } = useContext(StepContext);
 
   useEffect(() => {
-    updateStepStatus(0, "available");
+    const collectionDetails = JSON.parse(
+      localStorage.getItem("collectionDetails") || "{}"
+    );
+    if (
+      Object.values(collectionDetails).some((value) => value === "") ||
+      Object.values(collectionDetails).length === 0
+    ) {
+      updateStepStatus(0, "inprogress");
+    } else {
+      updateStepStatus(0, "completed");
+    }
   }, []);
 
   return (

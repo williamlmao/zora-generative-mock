@@ -11,9 +11,7 @@ import type { NextPageWithLayout } from "../../_app";
 const Page: NextPageWithLayout = () => {
   const { updateStepStatus } = useContext(StepContext);
 
-  useEffect(() => {
-    updateStepStatus(1, "available");
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="w-full">

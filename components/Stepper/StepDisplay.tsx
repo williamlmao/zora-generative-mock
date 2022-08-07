@@ -11,14 +11,14 @@ export const StepDisplay = ({
   active: boolean;
 }) => {
   const renderZorb = () => {
-    if (step.completed) {
+    if (step.status === "completed") {
       return (
         <motion.div>
           <Zorb color="darkgreen" />
         </motion.div>
       );
     }
-    if (step.available) {
+    if (step.status === "inprogress") {
       return (
         <motion.div>
           <Zorb color="yellow" />
@@ -31,11 +31,15 @@ export const StepDisplay = ({
   return (
     // "javascript:void(0)" disables the link
     <Link
-      href={step.available || step.completed ? step.path : "javascript:void(0)"}
+      href={
+        step.status === "completed" || step.status === "inprogress"
+          ? step.path
+          : "javascript:void(0)"
+      }
     >
       <motion.div
         className={`p-2 m-2 sm:p-4 sm:m-4 flex flex-col items-center justify-center ${
-          step.available || step.completed
+          step.status === "completed" || step.status === "inprogress"
             ? "hover:cursor-pointer"
             : "hover:cursor-not-allowed"
         }`}

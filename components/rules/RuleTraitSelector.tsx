@@ -19,7 +19,7 @@ export const RuleTraitSelector = ({
 }) => {
   const { updateRule } = useContext(RulesContext);
   if (!options || options.length === 0) {
-    return <div>No options</div>;
+    return <div>No category selected</div>;
   }
 
   return (
@@ -35,7 +35,7 @@ export const RuleTraitSelector = ({
         <Listbox.Button
           className={`${className} flex items-center gap-1 group z-0`}
         >
-          {selectedValue}
+          {selectedValue || "Select"}
           <BsChevronDown className="text-gray-400 text-sm group-hover:text-primary group-hover:font-bold" />
         </Listbox.Button>
 

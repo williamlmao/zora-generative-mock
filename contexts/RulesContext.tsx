@@ -21,6 +21,7 @@ export interface Rule {
 interface RulesContextInterface {
   updateRule: (ruleIndex: number, newRule: Rule) => void;
   deleteRule: (ruleIndex: number) => void;
+  addRule: () => void;
   rules: Rule[];
   traits: any | null; // TODO: Strictly type this and remove the any
   setRules: Function;
@@ -29,29 +30,14 @@ interface RulesContextInterface {
 export const RulesContext = createContext<RulesContextInterface>({
   updateRule: () => undefined,
   deleteRule: () => undefined,
-  rules: [
-    {
-      categoryA: "Composition",
-      valueA: "Rooftop",
-      operator: "Does not occur with",
-      categoryB: "Paper",
-      valueB: "Smoke",
-    },
-  ],
+  addRule: () => undefined,
+  rules: [],
   traits: {},
   setRules: () => undefined,
 });
 
 export const RulesContextProvider: FC<Props> = ({ children }) => {
-  const [rules, setRules] = useState<Rule[]>([
-    {
-      categoryA: "Composition",
-      valueA: "Rooftop",
-      operator: "Does not occur with",
-      categoryB: "Paper",
-      valueB: "Smoke",
-    },
-  ]);
+  const [rules, setRules] = useState<Rule[]>([]);
 
   const [traits, setTraits] = useState({});
 
@@ -60,16 +46,21 @@ export const RulesContextProvider: FC<Props> = ({ children }) => {
   // I'm using local storage in place of a backend for this mock app.
   useEffect(() => {
     setTraits(JSON.parse(localStorage.getItem("traitData") || "{}"));
-
-    // const localStorageData = localStorage.getItem("rules");
-    // if (localStorageData) {
-    //   setRules(JSON.parse(localStorageData));
-    // }
+    const localStorageData = localStorage.getItem("rules");
+    if (localStorageData) {
+      setRules(JSON.parse(localStorageData));
+    }
   }, []);
 
   useEffect(() => {
     if (Object.keys(rules).length > 0) {
       localStorage.setItem("rules", JSON.stringify(rules));
+    }
+    // If any rule has an empty string, rules step is incomplete
+    if (
+      rules.some((rule) => Object.values(rule).some((value) => value === ""))
+    ) {
+      updateStepStatus("rules", false);
     }
   }, [rules]);
 
@@ -77,6 +68,13 @@ export const RulesContextProvider: FC<Props> = ({ children }) => {
     const newRules = [...rules];
     newRules[ruleIndex] = newRule;
     setRules(newRules);
+  };
+
+  const addRule = () => {
+    setRules((prevState) => [
+      ...prevState,
+      { categoryA: "", valueA: "", operator: "", categoryB: "", valueB: "" },
+    ]);
   };
 
   const deleteRule = (ruleIndex: number) => {
@@ -88,6 +86,7 @@ export const RulesContextProvider: FC<Props> = ({ children }) => {
   return (
     <RulesContext.Provider
       value={{
+        addRule,
         updateRule,
         deleteRule,
         rules,

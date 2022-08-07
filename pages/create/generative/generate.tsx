@@ -11,8 +11,8 @@ const Page: NextPageWithLayout = () => {
   return (
     <div className="w-full">
       <NextSeo
-        title="Generative Rules • ZORA Generative"
-        description="Set your generative rules"
+        title="Generate Collection • ZORA Generative"
+        description="Generate your collection at last"
       />
       <RulesContextProvider>
         <RuleBuilder />

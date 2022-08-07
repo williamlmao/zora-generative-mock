@@ -1,45 +1,50 @@
-import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Button } from "react-daisyui";
 import { useDropzone } from "react-dropzone";
-import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+import { Resolver, useForm } from "react-hook-form";
 import { useAccount } from "wagmi";
 import { StepContext } from "../../contexts/StepContext";
 import { CustomConnectButton } from "../CustomConnectButton";
+import { PageControls } from "../PageControls";
 
 export const CollectionDetailsForm = ({}: {}) => {
   const { updateStepStatus } = useContext(StepContext);
+  const router = useRouter();
   const { address } = useAccount();
-  const [collectionDetails, setCollectionDetails] = useState({});
-  useEffect(() => {
-    setCollectionDetails(
-      JSON.parse(localStorage.getItem("collectionDetails") || "{}")
-    );
-  }, []);
-  const { register, getValues } = useForm({
-    defaultValues: {
-      name: collectionDetails?.name,
-      description: collectionDetails?.description,
-      royalty: collectionDetails?.royalty,
-      symbol: collectionDetails?.symbol,
-    },
-  });
+
+  const { register, getValues, handleSubmit, setValue } = useForm();
   const { getRootProps, getInputProps } = useDropzone();
-  console.log("collectionDetails", collectionDetails);
+
+  const onSubmit = (data: any) => {
+    updateStepStatus(0, "completed");
+    // updateStepStatus(1, "inprogress");
+    localStorage.setItem("collectionDetails", JSON.stringify(data));
+    router.push("/create/generative/traits");
+  };
+
+  useEffect(() => {
+    const storedDetails = JSON.parse(
+      localStorage.getItem("collectionDetails") || "{}"
+    );
+    if (storedDetails) {
+      setValue("name", storedDetails.name);
+      setValue("description", storedDetails.description);
+      setValue("symbol", storedDetails.symbol);
+      setValue("royalty", storedDetails.royalty);
+    }
+  }, []);
+
   return (
-    <form className="flex flex-col flex-col-reverse md:flex-row h-full gap-12 ">
+    <form
+      className="flex flex-col flex-col-reverse md:flex-row h-full gap-12 "
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <div className="flex flex-col w-full md:w-1/2">
         <div className=" mb-4">
           <div className="font-medium text-secondary ml-2 mb-2">Name</div>
           <input
             {...register("name")}
-            onChange={() => {
-              setCollectionDetails({
-                ...collectionDetails,
-                name: getValues("name"),
-              });
-            }}
-            value={collectionDetails.name}
             placeholder="Zorbs"
             className="bg-base-200 rounded-md p-2 w-full"
           />
@@ -71,44 +76,8 @@ export const CollectionDetailsForm = ({}: {}) => {
             className="bg-base-200 rounded-md p-2 w-full"
           />
         </div>
-        {address ? (
-          <Link href="/create/generative/traits">
-            <Button
-              type="submit"
-              color="primary"
-              className="w-full normal-case"
-              onClick={() => {
-                updateStepStatus(0, "completed");
-                updateStepStatus(1, "available");
-                localStorage.setItem(
-                  "collectionDetails",
-                  JSON.stringify(getValues())
-                );
-              }}
-            >
-              Next Step
-            </Button>
-          </Link>
-        ) : (
-          <Link href="/create/generative/traits">
-            <Button
-              type="submit"
-              color="primary"
-              className="w-full normal-case"
-              onClick={() => {
-                updateStepStatus(0, "completed");
-                updateStepStatus(1, "available");
-                localStorage.setItem(
-                  "collectionDetails",
-                  JSON.stringify(getValues())
-                );
-              }}
-            >
-              Next Step
-            </Button>
-          </Link>
-          // <CustomConnectButton />
-        )}
+
+        <PageControls nextDisabled={false} />
 
         <p className="text-xs text-gray-500 text-center my-4">
           5% of all primary sales go to zora.eth.
@@ -121,7 +90,7 @@ export const CollectionDetailsForm = ({}: {}) => {
           className="w-full h-full p-12 border-4 border-dashed bg-base-100 text-center flex flex-col items-center justify-center"
         >
           <input {...getInputProps()} />
-          <p className="font-semibold">Drag and drop your artwork</p>
+          <p className="font-semibold">Drag and drop your cover artwork</p>
           <p className="text-sm text-gray-400">Image/Audio/Video supported</p>
         </div>
       </section>

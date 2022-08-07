@@ -10,13 +10,13 @@ export const RuleCard = ({ rule, index }: { rule: Rule; index: number }) => {
   if (!traits || Object.keys(traits).length == 0) {
     return <div>Loading...</div>;
   }
-  console.log("rule", rule, traits);
+
   return (
     <div className="flex border-2 rounded-md justify-between p-2">
       <div className="p-4 w-[300px] flex flex-col items-center justify-center">
         <RuleTraitSelector
           rule={rule}
-          selectedValue={rule.categoryA}
+          selectedValue={rule?.categoryA}
           property="categoryA"
           options={categories}
           ruleIndex={index}
@@ -24,9 +24,9 @@ export const RuleCard = ({ rule, index }: { rule: Rule; index: number }) => {
         />
         <RuleTraitSelector
           rule={rule}
-          selectedValue={rule.valueA}
+          selectedValue={rule?.valueA}
           property="valueA"
-          options={traits[rule.categoryA].map((trait: Trait) => trait.value)}
+          options={traits[rule?.categoryA]?.map((trait: Trait) => trait.value)}
           ruleIndex={index}
           className="text-2xl font-medium"
         />
@@ -34,7 +34,7 @@ export const RuleCard = ({ rule, index }: { rule: Rule; index: number }) => {
       <div className="bg-base-200 rounded-md flex items-center justify-center ">
         <RuleTraitSelector
           rule={rule}
-          selectedValue={rule.operator}
+          selectedValue={rule?.operator}
           property="operator"
           options={["Does not occur with", "Only occurs with"]}
           ruleIndex={index}
@@ -44,7 +44,7 @@ export const RuleCard = ({ rule, index }: { rule: Rule; index: number }) => {
       <div className="p-4 w-[300px] flex flex-col items-center justify-center">
         <RuleTraitSelector
           rule={rule}
-          selectedValue={rule.categoryB}
+          selectedValue={rule?.categoryB}
           property="categoryB"
           options={categories}
           ruleIndex={index}
@@ -52,9 +52,9 @@ export const RuleCard = ({ rule, index }: { rule: Rule; index: number }) => {
         />
         <RuleTraitSelector
           rule={rule}
-          selectedValue={rule.valueB}
+          selectedValue={rule?.valueB}
           property="valueB"
-          options={traits[rule.categoryB].map((trait: Trait) => trait.value)}
+          options={traits[rule?.categoryB]?.map((trait: Trait) => trait.value)}
           ruleIndex={index}
           className="text-2xl font-medium"
         />

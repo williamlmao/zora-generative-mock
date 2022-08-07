@@ -61,7 +61,6 @@ export const TraitsContextProvider: FC<Props> = ({ children }) => {
     if (Object.keys(traitData).length > 0) {
       localStorage.setItem("traitData", JSON.stringify(traitData));
       updateStepStatus(1, "completed");
-      updateStepStatus(2, "available");
     }
   }, [traitData]);
 
