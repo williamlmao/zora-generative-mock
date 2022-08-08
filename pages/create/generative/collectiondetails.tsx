@@ -12,10 +12,11 @@ const Page: NextPageWithLayout = () => {
     const collectionDetails = JSON.parse(
       localStorage.getItem("collectionDetails") || "{}"
     );
-    if (
+
+    const collectionDetailsInProgress =
       Object.values(collectionDetails).some((value) => value === "") ||
-      Object.values(collectionDetails).length === 0
-    ) {
+      Object.values(collectionDetails).length === 0;
+    if (collectionDetailsInProgress) {
       updateStepStatus(0, "inprogress");
     } else {
       updateStepStatus(0, "completed");
