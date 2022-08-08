@@ -28,7 +28,7 @@ export const TraitValueCard = ({
         trait={trait}
       />
       <motion.div
-        className="m-2 bg-base-300 p-4 rounded-md text-center flex flex-col justify-between min-w-[150px] hover:cursor-pointer items-center"
+        className="m-2 bg-base-200 p-4 rounded-md text-center flex flex-col justify-between min-w-[150px] hover:cursor-pointer items-center"
         key={trait.value}
         whileHover={{ scale: 1.08 }}
         whileTap={{ translateY: 15 }}

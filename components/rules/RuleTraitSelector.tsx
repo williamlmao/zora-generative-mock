@@ -31,7 +31,11 @@ export const RuleTraitSelector = ({
         updateRule(ruleIndex, updatedRule);
       }}
     >
-      <div className="relative">
+      <div
+        className={`relative ${
+          !selectedValue ? "p-1 border-2 border-red-400 rounded-md" : ""
+        }`}
+      >
         <Listbox.Button
           className={`${className} flex items-center gap-1 group z-0`}
         >

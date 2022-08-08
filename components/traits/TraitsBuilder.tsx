@@ -20,13 +20,23 @@ export const TraitsBuilder = () => {
           <IoIosInformation className="text-4xl text-gray-400 rounded-full border-2" />
         </Tooltip>
         <Button
+          size="sm"
+          color="primary"
+          className="normal-case"
           onClick={() => {
             setTraitData(mockTraitData.traits);
           }}
         >
           Bulk Upload
         </Button>
-        <Button onClick={() => setModalVisible(true)}>New Category</Button>
+        <Button
+          size="sm"
+          color="primary"
+          className="normal-case"
+          onClick={() => setModalVisible(true)}
+        >
+          + New Category
+        </Button>
       </div>
       <TraitCategoryModal
         modalVisible={modalVisible}

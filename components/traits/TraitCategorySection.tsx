@@ -45,7 +45,7 @@ export const TraitCategorySection = ({
         setModalVisible={setCategoryModalVisible}
         editCategory={category}
       />
-      <div className="bg-base-200 p-4 rounded-md flex flex-wrap max-h-[600px] overflow-y-auto">
+      <div className="border-2 p-4 rounded-md flex flex-wrap max-h-[600px] overflow-y-auto">
         {traits.map((trait) => {
           return (
             <TraitValueCard

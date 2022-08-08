@@ -12,7 +12,7 @@ export const RuleCard = ({ rule, index }: { rule: Rule; index: number }) => {
   }
 
   return (
-    <div className="flex border-2 rounded-md justify-between p-2">
+    <div className="flex bg-base-200 border-2 rounded-md justify-between p-2">
       <div className="p-4 w-[300px] flex flex-col items-center justify-center">
         <RuleTraitSelector
           rule={rule}

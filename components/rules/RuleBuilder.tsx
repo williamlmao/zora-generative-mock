@@ -26,7 +26,7 @@ export const RuleBuilder = () => {
         + New Rule
       </Button>
 
-      <div className="flex flex-col bg-base-200 rounded-md p-12 gap-4">
+      <div className="flex flex-col border-2 rounded-md p-12 gap-4">
         {rules.length === 0 ? (
           <div className="text-center font-medium">
             Add a new rule or continue without any
