@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
+import { Tooltip } from "react-daisyui";
 import { useDropzone } from "react-dropzone";
 import { useForm } from "react-hook-form";
 import { useAccount } from "wagmi";
@@ -11,6 +12,8 @@ export const CollectionDetailsForm = ({}: {}) => {
   const { steps, stepIndex, updateStepStatus } = useContext(StepContext);
   const router = useRouter();
   const { address } = useAccount();
+  const [showConnectWallet, setShowConnectWallet] = useState(true);
+
   const { register, handleSubmit, setValue } = useForm();
   const { getRootProps, getInputProps } = useDropzone();
 
@@ -19,6 +22,12 @@ export const CollectionDetailsForm = ({}: {}) => {
     localStorage.setItem("collectionDetails", JSON.stringify(data));
     router.push(steps[stepIndex + 1].path);
   };
+
+  useEffect(() => {
+    if (address) {
+      setShowConnectWallet(false);
+    }
+  }, [address]);
 
   useEffect(() => {
     const storedDetails = JSON.parse(
@@ -78,13 +87,11 @@ export const CollectionDetailsForm = ({}: {}) => {
             autoComplete="off"
           />
         </div>
-        <div className={`${address ? "block" : "hidden"}`}>
-          <PageControls nextDisabled={false} />
-        </div>
-        <div className={`${address ? "hidden" : "block"}`}>
+        {showConnectWallet ? (
           <CustomConnectButton />
-        </div>
-
+        ) : (
+          <PageControls nextDisabled={false} />
+        )}
         <p className="text-xs text-gray-500 text-center my-4">
           5% of all primary sales go to zora.eth.
         </p>
