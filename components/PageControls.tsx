@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { Button } from "react-daisyui";
 import { StepContext } from "../contexts/StepContext";
 
 export const PageControls = ({ nextDisabled }: { nextDisabled: boolean }) => {
   const { steps, stepIndex, updateStepStatus } = useContext(StepContext);
-
+  const router = useRouter();
   if (stepIndex === steps.length - 1) {
     return (
       <Button
@@ -29,19 +30,20 @@ export const PageControls = ({ nextDisabled }: { nextDisabled: boolean }) => {
           </Button>
         </Link>
       )}
-      <Link href={steps[stepIndex + 1].path}>
-        <Button
-          type="submit"
-          className="flex-1 normal-case"
-          color="primary"
-          disabled={nextDisabled}
-          onClick={() => {
-            updateStepStatus(stepIndex, "completed");
-          }}
-        >
-          Next
-        </Button>
-      </Link>
+      {/* <Link href={steps[stepIndex + 1].path}> */}
+      <Button
+        type="submit"
+        className="flex-1 normal-case"
+        color="primary"
+        disabled={nextDisabled}
+        onClick={() => {
+          updateStepStatus(stepIndex, "completed");
+          router.push(steps[stepIndex + 1].path);
+        }}
+      >
+        Next
+      </Button>
+      {/* </Link> */}
     </div>
   );
 };

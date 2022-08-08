@@ -112,7 +112,6 @@ export const StepContextProvider: FC<Props> = ({ children }) => {
     setSteps(
       steps.map((step, index) => {
         if (index === indexToBeUpdated) {
-          console.log("UPDATED STEP", step, "TO", status);
           return { ...step, status };
         }
         if (
@@ -120,15 +119,9 @@ export const StepContextProvider: FC<Props> = ({ children }) => {
           steps[indexToBeUpdated + 1].status !== "completed" &&
           status === "completed"
         ) {
-          console.log(
-            "UPDATING STEP",
-            steps[indexToBeUpdated + 1],
-            "TO",
-            status
-          );
           return { ...step, status: "inprogress" };
         }
-        console.log("returning step", step);
+
         return step;
       })
     );

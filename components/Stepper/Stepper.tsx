@@ -15,8 +15,6 @@ export const Stepper = () => {
     }
   }, [stepIndex, router, steps]);
 
-  console.log(steps);
-
   return (
     <div className="font-medium text-sm flex justify-center text-center">
       <div className="flex mt-12">

@@ -1,26 +1,22 @@
-import { useContext, useEffect } from "react";
-import { Button } from "react-daisyui";
-import { useDropzone } from "react-dropzone";
 import { useRouter } from "next/router";
-import { Resolver, useForm } from "react-hook-form";
+import { useContext, useEffect } from "react";
+import { useDropzone } from "react-dropzone";
+import { useForm } from "react-hook-form";
 import { useAccount } from "wagmi";
 import { StepContext } from "../../contexts/StepContext";
-import { CustomConnectButton } from "../CustomConnectButton";
 import { PageControls } from "../PageControls";
 
 export const CollectionDetailsForm = ({}: {}) => {
-  const { updateStepStatus } = useContext(StepContext);
+  const { steps, updateStepStatus } = useContext(StepContext);
   const router = useRouter();
   const { address } = useAccount();
 
-  const { register, getValues, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
   const { getRootProps, getInputProps } = useDropzone();
 
   const onSubmit = (data: any) => {
     updateStepStatus(0, "completed");
-    // updateStepStatus(1, "inprogress");
     localStorage.setItem("collectionDetails", JSON.stringify(data));
-    router.push("/create/generative/traits");
   };
 
   useEffect(() => {
@@ -33,7 +29,7 @@ export const CollectionDetailsForm = ({}: {}) => {
       setValue("symbol", storedDetails.symbol);
       setValue("royalty", storedDetails.royalty);
     }
-  }, []);
+  }, [steps]);
 
   return (
     <form

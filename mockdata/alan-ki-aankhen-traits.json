@@ -31,7 +31,7 @@
       { "value": "Clear", "weight": 1.3 },
       { "value": "Gentle Glow", "weight": 1.1 },
       { "value": "Waves", "weight": 1.2 },
-      { "value": "Dut Rings", "weight": 0.2 },
+      { "value": "Rings", "weight": 0.2 },
       { "value": "Sprials", "weight": 0.5 }
     ]
   }

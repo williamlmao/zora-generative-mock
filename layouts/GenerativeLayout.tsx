@@ -36,7 +36,7 @@ export const GenerativeLayout: FC<Props> = ({ title, children }) => {
   const { reset } = useContext(StepContext);
   return (
     <PrimaryLayout>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full relative">
         <Stepper />
         <AnimatePresence exitBeforeEnter>
           <motion.div
@@ -53,9 +53,9 @@ export const GenerativeLayout: FC<Props> = ({ title, children }) => {
                 onClick={() => {
                   reset();
                 }}
-                className="hover:underline"
+                className="hover:underline absolute top-4 right-4"
               >
-                Reset
+                Reset All
               </button>
             </div>
 
