@@ -66,17 +66,20 @@ export const StepContextProvider: FC<Props> = ({ children }) => {
   }, [router.pathname]);
 
   useEffect(() => {
+    const localStorageCollectionDetails = JSON.parse(
+      localStorage.getItem("collectionDetails") || "{}"
+    );
     // This logic was originally handled in StepContext but ran into a rerendering bug there. Moving the logic here fixed it, but I would still prefer to have it back in Stepcontext.
-    const collectionDetailsCompleted = !Object.keys(
-      JSON.parse(localStorage.getItem("collectionDetails") || "{}")
-    ).some((value) => value === "");
+    const collectionDetailsCompleted =
+      !Object.keys(localStorageCollectionDetails).some(
+        (value) => value === ""
+      ) && Object.values(localStorageCollectionDetails).length > 0;
 
     const traitDataCompleted =
       Object.keys(JSON.parse(localStorage.getItem("traitData") || "{}"))
         .length > 0;
 
     if (collectionDetailsCompleted) {
-      // updateStep[0] to completed
       setSteps((prevSteps) => {
         const updatedSteps = [...prevSteps];
         updatedSteps[0].status = "completed";
