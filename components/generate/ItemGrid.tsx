@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
-import { Button } from "react-daisyui";
+import { Button, Tooltip } from "react-daisyui";
+import { BsSave } from "react-icons/bs";
 import { GeneratorContext, Item } from "../../contexts/GeneratorContext";
 import { ItemCard } from "./ItemCard";
+import { FaRegSave } from "react-icons/fa";
 
 export const ItemGrid = () => {
   const { items } = useContext(GeneratorContext);
@@ -25,12 +27,22 @@ export const ItemGrid = () => {
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
-        <div className="text-2xl font-medium mb-4">Your Collection</div>
-        <Button className="normal-case" color="primary">
-          Save Collection
-        </Button>
+        <div className="text-2xl font-medium mb-4">
+          Your Collection ({items.length})
+        </div>
+        <div className="flex gap-2">
+          <Tooltip message="This button doesn't do anything.">
+            <Button className="normal-case" color="secondary" size="sm">
+              +
+            </Button>
+          </Tooltip>
+          <Tooltip message="This button doesn't do anything.">
+            <Button className="normal-case" color="primary" size="sm">
+              <FaRegSave />
+            </Button>
+          </Tooltip>
+        </div>
       </div>
-
       <motion.div
         className="flex items-stretch flex-wrap gap-6"
         variants={staggerChildren}

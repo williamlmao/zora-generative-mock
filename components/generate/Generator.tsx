@@ -34,12 +34,13 @@ export const Generator = () => {
             <Button
               className="normal-case"
               color="primary"
+              size="sm"
               onClick={() => {
                 generate();
                 updateStepStatus(3, "completed");
               }}
             >
-              <div className="font-medium text-2xl">
+              <div className="font-medium text-lg">
                 Generate <span className="font-bold">{collectionSize}</span>{" "}
                 items
               </div>

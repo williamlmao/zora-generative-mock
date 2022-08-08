@@ -21,29 +21,37 @@ export const PageControls = ({ nextDisabled }: { nextDisabled: boolean }) => {
       </Button>
     );
   }
+
+  // We can't use the same button component as below because the form will not receive data if Next changes the route. So on collection details page we handle route change in the onSubmit function.
   return (
     <div className="w-full flex gap-4 mt-4">
-      {stepIndex > 0 && (
-        <Link href={steps[stepIndex - 1].path}>
-          <Button type="button" className="flex-1" color="secondary">
-            Back
-          </Button>
-        </Link>
+      {stepIndex === 0 ? (
+        <Button type="submit" className="flex-1 normal-case" color="primary">
+          Next
+        </Button>
+      ) : (
+        <>
+          <Link href={steps[stepIndex - 1].path}>
+            <Button type="button" className="flex-1" color="secondary">
+              Back
+            </Button>
+          </Link>
+          <Link href={steps[stepIndex + 1].path}>
+            <Button
+              type="submit"
+              className="flex-1 normal-case"
+              color="primary"
+              disabled={nextDisabled}
+              onClick={() => {
+                updateStepStatus(stepIndex, "completed");
+                router.push(steps[stepIndex + 1].path);
+              }}
+            >
+              Next
+            </Button>
+          </Link>
+        </>
       )}
-      {/* <Link href={steps[stepIndex + 1].path}> */}
-      <Button
-        type="submit"
-        className="flex-1 normal-case"
-        color="primary"
-        disabled={nextDisabled}
-        onClick={() => {
-          updateStepStatus(stepIndex, "completed");
-          router.push(steps[stepIndex + 1].path);
-        }}
-      >
-        Next
-      </Button>
-      {/* </Link> */}
     </div>
   );
 };
