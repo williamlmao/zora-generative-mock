@@ -20,7 +20,7 @@ export const StepDisplay = ({
     }
     if (step.status === "inprogress") {
       return (
-        <motion.div>
+        <motion.div className="w-[30px] h-[30px]">
           <Zorb color="yellow" />
         </motion.div>
       );

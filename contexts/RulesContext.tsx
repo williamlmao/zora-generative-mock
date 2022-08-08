@@ -60,7 +60,7 @@ export const RulesContextProvider: FC<Props> = ({ children }) => {
     if (
       rules.some((rule) => Object.values(rule).some((value) => value === ""))
     ) {
-      updateStepStatus("rules", false);
+      updateStepStatus(2, "inprogress");
     }
   }, [rules]);
 

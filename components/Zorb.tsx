@@ -1,14 +1,16 @@
 export const Zorb = ({
   color,
+  size = "30",
 }: {
   color?: "yellow" | "lightgreen" | "darkgreen" | "blue";
+  size?: string;
 }) => {
   if (color === "lightgreen") {
     return (
-      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+      <svg width={size} height={size} viewBox="0 0 30 30" fill="none">
         <rect
-          width="30"
-          height="30"
+          width={size}
+          height={size}
           rx="15"
           fill="url(#paint0_radial_6017_3014)"
         ></rect>
@@ -34,10 +36,10 @@ export const Zorb = ({
 
   if (color === "darkgreen") {
     return (
-      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+      <svg width={size} height={size} viewBox="0 0 30 30" fill="none">
         <rect
-          width="30"
-          height="30"
+          width={size}
+          height={size}
           rx="15"
           fill="url(#paint0_radial_6017_3015)"
         ></rect>
@@ -64,15 +66,15 @@ export const Zorb = ({
   if (color === "yellow") {
     return (
       <svg
-        width="30"
-        height="30"
+        width={size}
+        height={size}
         viewBox="0 0 30 30"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect
-          width="30"
-          height="30"
+          width={size}
+          height={size}
           rx="15"
           fill="url(#paint0_radial_6017_3018)"
         ></rect>
@@ -98,15 +100,15 @@ export const Zorb = ({
 
   return (
     <svg
-      width="30"
-      height="30"
+      width={size}
+      height={size}
       viewBox="0 0 30 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <rect
-        width="30"
-        height="30"
+        width={size}
+        height={size}
         rx="15"
         fill="url(#paint0_radial_6017_3016)"
       ></rect>

@@ -3,21 +3,21 @@
     "Composition": [
       {
         "value": "Eyescape",
-        "weight": 1.2
+        "weight": 1
       },
       { "value": "Pencil city", "weight": 0.8 },
       { "value": "Ancient city", "weight": 1 },
-      { "value": "Crowded city", "weight": 1.2 },
+      { "value": "Crowded city", "weight": 1 },
       { "value": "Rooftops", "weight": 0.4 },
       { "value": "Maze of windows", "weight": 0.1 }
     ],
     "Moon Size": [
-      { "value": "Small", "weight": 1.9 },
-      { "value": "Medium", "weight": 1.5 },
-      { "value": "Large", "weight": 1.1 }
+      { "value": "Small", "weight": 1 },
+      { "value": "Medium", "weight": 1 },
+      { "value": "Large", "weight": 1 }
     ],
     "Number of moons": [
-      { "value": "1", "weight": 1.4 },
+      { "value": "1", "weight": 1 },
       { "value": "2", "weight": 1.2 },
       { "value": "3", "weight": 0.2 }
     ],
