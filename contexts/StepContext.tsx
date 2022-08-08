@@ -1,6 +1,5 @@
-import React, { createContext, FC, useEffect } from "react";
 import { useRouter } from "next/router";
-import { stat } from "fs";
+import React, { createContext, FC, useEffect } from "react";
 
 interface Props {
   children: React.ReactNode;

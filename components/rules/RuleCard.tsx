@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import { Rule, RulesContext } from "../../contexts/RulesContext";
-import { TraitsContext } from "../../contexts/TraitsContext";
-import { Menu } from "@headlessui/react";
-import { RuleTraitSelector } from "./RuleTraitSelector";
 import { Trait } from "../traits/traits.types";
+import { RuleTraitSelector } from "./RuleTraitSelector";
+
 export const RuleCard = ({ rule, index }: { rule: Rule; index: number }) => {
   const { traits } = useContext(RulesContext);
   const categories = Object.keys(traits);

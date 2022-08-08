@@ -1,8 +1,6 @@
-import Link from "next/link";
 import { useContext } from "react";
-import { Button, Select } from "react-daisyui";
+import { Button } from "react-daisyui";
 import { RulesContext } from "../../contexts/RulesContext";
-import { StepContext } from "../../contexts/StepContext";
 import { PageControls } from "../PageControls";
 import { RuleCard } from "./RuleCard";
 

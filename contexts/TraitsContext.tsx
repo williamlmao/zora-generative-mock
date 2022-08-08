@@ -46,7 +46,6 @@ export const TraitsContext = createContext<TraitsContextInterface>({
 
 export const TraitsContextProvider: FC<Props> = ({ children }) => {
   const [traitData, setTraitData] = useState<TraitDataInterface>({});
-  const [modalVisible, setModalVisible] = useState(false);
   const { updateStepStatus } = useContext(StepContext);
 
   // I'm using local storage in place of a backend for this mock app.

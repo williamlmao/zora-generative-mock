@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { Button, Tooltip } from "react-daisyui";
-import { BsSave } from "react-icons/bs";
-import { GeneratorContext, Item } from "../../contexts/GeneratorContext";
-import { ItemCard } from "./ItemCard";
 import { FaRegSave } from "react-icons/fa";
+import { GeneratorContext } from "../../contexts/GeneratorContext";
+import { ItemCard } from "./ItemCard";
 
 export const ItemGrid = () => {
   const { items } = useContext(GeneratorContext);

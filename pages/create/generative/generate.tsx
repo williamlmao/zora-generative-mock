@@ -6,8 +6,6 @@ import { GenerativeLayout } from "../../../layouts/GenerativeLayout";
 import type { NextPageWithLayout } from "../../_app";
 
 const Page: NextPageWithLayout = () => {
-  // If the previous page has not been completed, then redirect to the start of the flow.
-
   return (
     <div className="w-full">
       <NextSeo

@@ -38,7 +38,6 @@ export const GeneratorContextProvider: FC<Props> = ({ children }) => {
   }, []);
 
   const deleteItem = (index: number) => {
-    console.log("deleting item", index);
     setItems(items.filter((_, i) => i !== index));
   };
 

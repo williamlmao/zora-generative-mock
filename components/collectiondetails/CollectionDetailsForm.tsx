@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import { Tooltip } from "react-daisyui";
 import { useDropzone } from "react-dropzone";
 import { useForm } from "react-hook-form";
 import { useAccount } from "wagmi";
@@ -12,13 +11,10 @@ export const CollectionDetailsForm = ({}: {}) => {
   const { steps, stepIndex, updateStepStatus } = useContext(StepContext);
   const router = useRouter();
   const { address } = useAccount();
-  const [showConnectWallet, setShowConnectWallet] = useState(!address);
-
   const { register, handleSubmit, setValue } = useForm();
   const { getRootProps, getInputProps } = useDropzone();
 
   const onSubmit = (data: any) => {
-    console.log("on submit running", data);
     updateStepStatus(0, "completed");
     localStorage.setItem("collectionDetails", JSON.stringify(data));
     router.push(steps[stepIndex + 1].path);
@@ -28,9 +24,7 @@ export const CollectionDetailsForm = ({}: {}) => {
     const storedDetails = JSON.parse(
       localStorage.getItem("collectionDetails") || "{}"
     );
-    if (address) {
-      setShowConnectWallet(true);
-    }
+
     if (storedDetails) {
       setValue("name", storedDetails.name);
       setValue("description", storedDetails.description);

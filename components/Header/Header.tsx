@@ -1,7 +1,5 @@
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 import { CustomConnectButton } from "../CustomConnectButton";
-import { GreenZorb } from "../GreenZorb";
 import { Zorb } from "../Zorb";
 
 // Header height is controlled by the theme in tailwind.config.js

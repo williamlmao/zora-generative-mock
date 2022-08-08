@@ -1,8 +1,6 @@
-import Link from "next/link";
 import { useContext, useState } from "react";
 import { Button, Tooltip } from "react-daisyui";
 import { IoIosInformation } from "react-icons/io";
-import { StepContext } from "../../contexts/StepContext";
 import { TraitsContext } from "../../contexts/TraitsContext";
 import mockTraitData from "../../mockdata/alan-ki-aankhen-traits.json";
 import { PageControls } from "../PageControls";
@@ -10,9 +8,9 @@ import { TraitCategoryModal } from "./TraitCategoryModal";
 import { TraitCategorySection } from "./TraitCategorySection";
 
 export const TraitsBuilder = () => {
-  const { updateStepStatus } = useContext(StepContext);
   const [modalVisible, setModalVisible] = useState(false);
   const { setTraitData, traitData } = useContext(TraitsContext);
+
   return (
     <div>
       <div className="flex gap-4 justify-end items-center">

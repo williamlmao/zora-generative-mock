@@ -4,7 +4,7 @@ import { StepContext } from "../../contexts/StepContext";
 import { StepDisplay } from "./StepDisplay";
 
 export const Stepper = () => {
-  const { steps, stepIndex, updateStepStatus, reset } = useContext(StepContext);
+  const { steps, stepIndex } = useContext(StepContext);
   const router = useRouter();
   const currentPath = router.pathname;
 
@@ -18,7 +18,7 @@ export const Stepper = () => {
   return (
     <div className="font-medium text-sm flex justify-center text-center">
       <div className="flex mt-12">
-        {steps.map((step, index) => {
+        {steps.map((step) => {
           return (
             <StepDisplay
               step={step}

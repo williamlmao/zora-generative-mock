@@ -1,5 +1,6 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { GreenZorb } from "./GreenZorb";
+import { Zorb } from "./Zorb";
+
 export const CustomConnectButton = () => {
   return (
     <ConnectButton.Custom>
@@ -53,13 +54,12 @@ export const CustomConnectButton = () => {
                     {chain.hasIcon && (
                       <div
                         style={{
-                          // background: chain.iconBackground,
                           borderRadius: 999,
                           overflow: "hidden",
                           marginRight: 4,
                         }}
                       >
-                        {chain.iconUrl && <GreenZorb />}
+                        {chain.iconUrl && <Zorb color="lightgreen" size="27" />}
                       </div>
                     )}
                   </button>

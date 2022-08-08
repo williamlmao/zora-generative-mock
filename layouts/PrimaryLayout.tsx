@@ -1,5 +1,4 @@
-import { NextSeo } from "next-seo";
-import React, { FC, useContext } from "react";
+import React, { FC } from "react";
 import { Theme } from "react-daisyui";
 import { Header } from "../components/Header";
 

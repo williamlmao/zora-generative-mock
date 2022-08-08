@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useContext, useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import { GeneratorContext, Item } from "../../contexts/GeneratorContext";
+
 export const ItemCard = ({ item, index }: { item: Item; index: number }) => {
   const { deleteItem } = useContext(GeneratorContext);
   const [hideItem, setHideItem] = useState(false);
